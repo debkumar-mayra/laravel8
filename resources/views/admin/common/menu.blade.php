@@ -17,7 +17,7 @@
 
         </div>
         <div class="info">
-          <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::guard('siteAdmin')->user()->name }}</a>
+          <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::guard('siteAdmin')->user()->full_name }}</a>
         </div>
       </div>
 
@@ -44,15 +44,6 @@
             </a>
           </li>
 
-
-          <li class="nav-item">
-            <a href="{{ route('admin.categories') }}" class="nav-link {{ Request::is('admin/categor*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Categories
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a href="{{ route('admin.settings') }}" class="nav-link {{ Request::is('admin/settings*') ? 'active' : '' }}">

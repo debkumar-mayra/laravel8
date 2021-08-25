@@ -54,7 +54,7 @@
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.logout') }}">
+        <a class="nav-link" href="{{ route('logout') }}">
           <b><i class="fas fa-sign-out-alt"></i> Logout</b>
         </a>
       </li>

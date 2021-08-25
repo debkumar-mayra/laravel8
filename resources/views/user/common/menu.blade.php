@@ -15,7 +15,7 @@
            <img src="{{ Auth::guard('siteUser')->user()->profile->profile_photo }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ route('profile') }}" class="d-block">{{ request()->user()->name }}</a>
+          <a href="{{ route('user.profile') }}" class="d-block">{{ request()->user()->full_name }}</a>
         </div>
       </div>
 

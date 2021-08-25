@@ -22,16 +22,24 @@
             @csrf
            
            <div class="form-group">
-             <label>Name:</label>
-             <input type="text" name="name" class="form-control @error('name') @enderror">
-             @error('name')
+             <label>First Name:</label>
+             <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" value="{{old('first_name')}}">
+             @error('first_name')
              <span class="error invalid-feedback">{{$message}}</span>
              @enderror
            </div>
 
            <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{old('last_name')}}">
+            @error('last_name')
+            <span class="error invalid-feedback">{{$message}}</span>
+            @enderror
+          </div>
+
+           <div class="form-group">
              <label>Email:</label>
-             <input type="email" name="email" class="form-control @error('email') @enderror" >
+             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" >
               @error('email')
              <span class="error invalid-feedback">{{$message}}</span>
              @enderror
@@ -39,7 +47,7 @@
 
            <div class="form-group">
              <label>Password :</label>
-             <input type="password" name="password" class="form-control @error('password') @enderror">
+             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
               @error('password')
                <span class="error invalid-feedback">{{$message}}</span>
               @enderror
@@ -47,7 +55,7 @@
 
            <div class="form-group">
              <label>Password :</label>
-             <input type="password" name="confirm_password" class="form-control @error('confirm_password') @enderror">
+             <input type="password" name="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror">
               @error('confirm_password')
                <span class="error invalid-feedback">{{$message}}</span>
               @enderror

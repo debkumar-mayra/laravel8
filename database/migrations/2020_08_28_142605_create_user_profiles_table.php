@@ -16,17 +16,16 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unique();
-            $table->string('mobile',16)->nullable();
             $table->date('dob')->nullable();
-            $table->enum('gender', ['male','female','other'])->nullable();
-            $table->string('profile_photo',100)->nullable();
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->string('profile_photo', 100)->nullable();
             $table->text('address')->nullable();
             $table->text('about')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

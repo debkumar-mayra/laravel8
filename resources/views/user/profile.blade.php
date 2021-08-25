@@ -7,7 +7,7 @@
 
         @section('header', 'Profile')
          @section('badge')
-           <li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
+           <li class="breadcrumb-item"><a href="{{ route('user.profile') }}">Profile</a></li>
           @endsection
 
     <div class="row">
@@ -20,7 +20,7 @@
                   <img class="profile-user-img img-fluid img-circle" src="{{ $user->profile->profile_photo }}">
                 </div>
 
-                <h3 class="profile-username text-center">{{$user->name}}</h3>
+                <h3 class="profile-username text-center">{{$user->full_name}}</h3>
 
                 {{-- <p class="text-muted text-center">Software Engineer</p> --}}
 
@@ -30,7 +30,7 @@
                   </li>
 
                   <li class="list-group-item">
-                    <b>Mobile</b> <a class="float-right">{{$user->profile->mobile}}</a>
+                    <b>Mobile</b> <a class="float-right">{{$user->mobile}}</a>
                   </li>
 
                   <li class="list-group-item">
@@ -81,20 +81,31 @@
                   {{-- general tab start  --}}
                   <div class="active tab-pane" id="general">
 
-                    <form class="form-horizontal" action="{{ route('profile') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('user.profile') }}" method="POST">
 
                       <input type="hidden" name="user_id" value="{{$user->id}}">
                        @csrf
 
                       <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label">Name</label>
+                        <label  class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-10">
-                          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="name" value="{{$user->name}}">
-                          @error('name')
+                          <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="First name" value="{{$user->first_name}}">
+                          @error('first_name')
                           <span class="error invalid-feedback">{{ $message }}</span>
                           @enderror
                         </div>
                       </div>
+
+                      <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label">last Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last name" value="{{$user->last_name}}">
+                          @error('last_name')
+                          <span class="error invalid-feedback">{{ $message }}</span>
+                          @enderror
+                        </div>
+                      </div>
+
 
                       <div class="form-group row">
                         <label  class="col-sm-2 col-form-label">DOB</label>
@@ -137,7 +148,7 @@
                       <div class="form-group row">
                         <label  class="col-sm-2 col-form-label">Mobile</label>
                         <div class="col-sm-10">
-                          <input type="text" name="mobile" class="form-control @error('mobile') is-invalid @enderror" placeholder="mobile" value="{{$user->profile->mobile}}">
+                          <input type="text" name="mobile" class="form-control @error('mobile') is-invalid @enderror" placeholder="mobile" value="{{$user->mobile}}">
                        @error('mobile')
                         <span class="error invalid-feedback" id="error_description">{{ $message }}</span>
                        @enderror
@@ -177,7 +188,7 @@
                   {{-- profile image tab end  --}}
                  <div class="tab-pane" id="profile-image">
 
-                   <form class="form-horizontal" action="{{ route('profile') }}" method="POST" enctype="multipart/form-data">
+                   <form class="form-horizontal" action="{{ route('user.profile') }}" method="POST" enctype="multipart/form-data">
                       <input type="hidden" name="user_id" value="{{$user->id}}">
                       @csrf
                       <div class="form-group row">
@@ -204,7 +215,7 @@
 
                   <!-- /.change email start -->
                   <div class="tab-pane" id="change-email">
-                    <form class="form-horizontal" action="{{ route('profile') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('user.profile') }}" method="POST">
                       <input type="hidden" name="user_id" value="{{$user->id}}">
                       @csrf
                       <div class="form-group row">
@@ -231,7 +242,7 @@
 
                  <!-- /.change-password start -->
                   <div class="tab-pane" id="change-password">
-                    <form class="form-horizontal" action="{{ route('profile') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('user.profile') }}" method="POST">
                       <input type="hidden" name="user_id" value="{{$user->id}}">
                       @csrf
                       <div class="form-group row">

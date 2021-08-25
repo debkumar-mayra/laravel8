@@ -17,7 +17,7 @@ class RedirectIfNotAdmin
     public function handle($request, Closure $next, $guard = 'siteAdmin')
     {
         if (!Auth::guard($guard)->check()) {
-            return redirect()->route('admin.login');
+            return redirect()->route('login');
         }
 
         return $next($request);

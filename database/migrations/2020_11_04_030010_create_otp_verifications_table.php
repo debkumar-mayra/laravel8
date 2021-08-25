@@ -15,8 +15,9 @@ class CreateOtpVerificationsTable extends Migration
     {
         Schema::create('otp_verifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->string('email');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('otp');
             $table->timestamps();
         });

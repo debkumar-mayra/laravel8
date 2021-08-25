@@ -17,7 +17,7 @@
               <div class="card-tools">
                 <form action="" method="GET">
                 <div class="input-group input-group-sm">
-                  <input type="text" name="search" class="form-control" placeholder="Search">
+                  <input type="text" name="search" class="form-control" placeholder="Search" value="{{$_GET['search'] ?? ''}}">
                   <div class="input-group-append">
                     <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                  
@@ -69,10 +69,10 @@
                         <td>
                       <div class="icheck-primary">
                         <input type="checkbox" name="users_id[]" value="{{ $user->id }}" id="check{{ $loop->iteration }}">
-                        <label for="check{{ $loop->iteration }}">#{{ $loop->iteration }}</label>
+                        <label for="check{{ $loop->iteration }}">{{ $loop->iteration }}</label>
                       </div>
                     </td>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->full_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->mobile }}</td>
                         <td width="150px">

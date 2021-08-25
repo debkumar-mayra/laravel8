@@ -14,6 +14,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-    	$this->per_page = getSetting('per_page');
+        $get_per_page = getSetting('per_page');
+        $this->per_page = $get_per_page ? $get_per_page : $this->per_page;
     }
 }

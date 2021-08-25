@@ -29,7 +29,7 @@
                   </li>
 
                   <li class="list-group-item">
-                    <b>Mobile</b> <a class="float-right">{{$user->profile->mobile}}</a>
+                    <b>Mobile</b> <a class="float-right">{{$user->mobile}}</a>
                   </li>
 
                   <li class="list-group-item">
@@ -86,10 +86,20 @@
                        @csrf
 
                       <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label">Name</label>
+                        <label  class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-10">
-                          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="name" value="{{$user->name}}">
-                          @error('name')
+                          <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="first_name" value="{{$user->first_name}}">
+                          @error('first_name')
+                          <span class="error invalid-feedback">{{ $message }}</span>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="last_name" value="{{$user->last_name}}">
+                          @error('last_name')
                           <span class="error invalid-feedback">{{ $message }}</span>
                           @enderror
                         </div>
@@ -136,7 +146,7 @@
                       <div class="form-group row">
                         <label  class="col-sm-2 col-form-label">Mobile</label>
                         <div class="col-sm-10">
-                          <input type="text" name="mobile" class="form-control @error('mobile') is-invalid @enderror" placeholder="mobile" value="{{$user->profile->mobile}}">
+                          <input type="text" name="mobile" class="form-control @error('mobile') is-invalid @enderror" placeholder="mobile" value="{{$user->mobile}}">
                        @error('mobile')
                         <span class="error invalid-feedback" id="error_description">{{ $message }}</span>
                        @enderror

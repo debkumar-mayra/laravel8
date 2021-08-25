@@ -73,16 +73,10 @@ return $time;
 
 
 
-function getUserDetails($id)
-{
-  $member = Members::find($id);
-  return $member ? $member : false ;
-}
-
 function getSetting($key)
 {
   $setting = SiteSetting::where('key',$key)->first();
-  return $setting ? $setting->value : '' ;
+  return $setting ? $setting->value : false ;
 }
 
 // function getLocaltime($){
@@ -93,5 +87,3 @@ function getSetting($key)
 //              $dt->setTimezone($tz);
 //              $ping->poll_time = $dt->format('Y-m-d H:i:s');
 // }
-
-?>

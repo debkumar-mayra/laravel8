@@ -89,10 +89,20 @@
                        @csrf
 
                       <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label">Name</label>
+                        <label  class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-10">
-                          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="name" value="{{$user->name}}">
-                          @error('name')
+                          <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="First name" value="{{$user->first_name}}">
+                          @error('first_name')
+                          <span class="error invalid-feedback">{{ $message }}</span>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last name" value="{{$user->last_name}}">
+                          @error('last_name')
                           <span class="error invalid-feedback">{{ $message }}</span>
                           @enderror
                         </div>

@@ -17,6 +17,9 @@ class RedirectIfNotUser
     public function handle($request, Closure $next, $guard = 'siteUser')
     {
         if (!Auth::guard($guard)->check()) {
+            if (!session()->has('url.intended')) {
+                session(['url.intended' => url()->previous()]);
+            }
             return redirect()->route('login');
         }
         return $next($request);
