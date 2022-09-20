@@ -41,15 +41,14 @@ class CommonController extends Controller
         "email" => $request->email,
         "password" => $request->password,
       );
-
       if (Auth::attempt($user_info)) {
-        if (Auth::user()->role == 2) {
+        if (Auth::user()->role_name == 'USER') {
           Auth::guard("siteUser")->attempt($user_info);
           $user_details = Auth::guard("siteUser")->user();
           return redirect()->intended('dashboard');
           // return redirect("dashboard");
         }
-        if (Auth::user()->role == 1) {
+        if (Auth::user()->role_name == 'SUPER-ADMIN') {
           Auth::guard("siteAdmin")->attempt($user_info);
           $user_details = Auth::guard("siteAdmin")->user();
           return redirect()->intended('admin/dashboard');

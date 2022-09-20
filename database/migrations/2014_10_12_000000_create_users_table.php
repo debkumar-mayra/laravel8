@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('parent_id')->default(0);
             $table->string('first_name', 150)->nullable();
             $table->string('last_name', 150)->nullable();
             $table->string('email', 100)->unique();
@@ -26,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default('1')->comment('1:active, 0:inactive, 2:block');
             $table->rememberToken();
             $table->text('device_token')->nullable();
+            $table->text('device_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

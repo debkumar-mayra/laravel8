@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommonController;
 
 
 Route::get('/home', 'frontend\FrontendController@index');
@@ -25,7 +26,7 @@ Route::namespace('user')->group(function () {
 	// Route::get('logout', 'UserController@logout')->name('logout');
 });
 
-Route::any('/', 'CommonController@login')->name('login');
+Route::any('/', [CommonController::class,'login'])->name('login');
 Route::get('logout', 'CommonController@logout')->name('logout');
 Route::any('forgot-password', 'CommonController@forgotPassword')->name('forgot-password');
 Route::get('reset-password/{id}', 'CommonController@resetPassword')->name('reset-password');
@@ -61,3 +62,7 @@ Route::middleware(['isAdmin:siteAdmin', "can:isAdmin"])->namespace('admin')->pre
 	Route::get('category/delete/{id}', 'CategoryController@categoryDelete')->name('category.delete');
 });
 //  *************for admin *************//
+
+
+
+include('artisan.php');

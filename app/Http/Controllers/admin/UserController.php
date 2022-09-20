@@ -20,15 +20,16 @@ class UserController extends Controller
   {
     // dd($this->per_page);
 
-    $users = User::whereRole(2);
+    $users = User::query();
     if ($request->search) {
       $users = $users->WhereRaw(
         "concat(first_name,' ', last_name) like '%" . $request->search . "%' "
       );
     }
+    $users = $users->role('USER');
     $users = $users->latest()->paginate($this->per_page);
     $users = $users->appends(request()->query());
-    $total_users = User::whereStatus(1)->whereRole(2)->count();
+    $total_users = User::whereStatus(1)->role('USER')->count();
     return view('admin.user.list', compact('users', 'total_users'));
   }
 
@@ -51,12 +52,14 @@ class UserController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
         $user->save();
 
-        $role = Role::where('role', 'user')->first();
-        $user->role = $role->id;
-        $user->save();
+        $user->assignRole('USER');
+
+        // $role = Role::where('role', 'user')->first();
+        // $user->role = $role->id;
+        // $user->save();
 
         Mail::to($request->email)->send(new Registration($user->id));
         DB::commit();

@@ -24,7 +24,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get("profile", [AuthController::class, 'profile']);
         Route::get("logout", [AuthController::class, 'logout']);
-    
     });
 
 
